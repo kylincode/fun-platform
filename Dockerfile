@@ -64,10 +64,10 @@ ADD /config /config
 
 # Configuration files are mounted in "/config"
 # Point to them with symbolic links
-#RUN ln -sf /config/lms.env.json /edx/app/edxapp/lms.env.json && \
-#    ln -sf /config/lms.auth.json /edx/app/edxapp/lms.auth.json && \
-#    ln -sf /config/cms.env.json /edx/app/edxapp/cms.env.json && \
-#    ln -sf /config/cms.auth.json /edx/app/edxapp/cms.auth.json
+RUN ln -sf /config/lms.env.json /edx/app/edxapp/lms.env.json && \
+    ln -sf /config/lms.auth.json /edx/app/edxapp/lms.auth.json && \
+    ln -sf /config/cms.env.json /edx/app/edxapp/cms.env.json && \
+    ln -sf /config/cms.auth.json /edx/app/edxapp/cms.auth.json
 
 # Symlink /config to edx-platform settings folder
 RUN ln -sf /config /edx/app/edxapp/edx-platform/lms/envs/fun && \
