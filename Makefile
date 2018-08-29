@@ -9,7 +9,7 @@ MANAGE_LMS       = $(COMPOSE_RUN) lms python manage.py lms
 
 default: help
 
-bootstrap: clone build run collectstatic migrate demo-course  ## install development dependencies
+bootstrap: build run collectstatic migrate demo-course  ## install development dependencies
 
 build:  ## build all containers
 	@$(COMPOSE) build;

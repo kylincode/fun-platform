@@ -60,7 +60,7 @@ ADMINS = config('ADMINS', default=[['funteam', 'dev@france-universite-numerique-
 SESSION_COOKIE_DOMAIN = None
 
 # we use mysql to store mutualize session persistance between Django instances
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 WIKI_ENABLED = True
 
@@ -129,6 +129,20 @@ HOSTNAME_MODULESTORE_DEFAULT_MAPPINGS = {
 LOCAL_LOGLEVEL = 'INFO'
 LOGGING_ENV = 'sandbox'
 LOG_DIR = '/edx/var/logs/edx'
+DATA_DIR = '/edx/var/edxapp/data'
+
+from openedx.core.lib.logsettings import get_logger_config
+
+LOGGING = get_logger_config(LOG_DIR,
+                            logging_env='sandbox',
+                            debug=False,
+                            service_variant='lms')  # SERVICE_VARIANT)
+
+LOGGING['handlers'].update(
+    local={'class': 'logging.NullHandler'},
+    tracking={'class': 'logging.NullHandler'},
+)
+
 
 # Max size of asset uploads to GridFS
 MAX_ASSET_UPLOAD_FILE_SIZE_IN_MB = 10
@@ -309,9 +323,6 @@ def configure_raven(sentry_dsn, raven_config, logging_config):
     logging_config['handlers']['sentry']['dsn'] = sentry_dsn
     raven_config['dsn'] = sentry_dsn
 
-# FUN Mongo database
-# Other settings FUN_MONGO_HOST, FUN_MONGO_USER and FUN_MONGO_PASSWORD will come from lms/cms.auth.env
-FUN_MONGO_DATABASE = 'fun'
 
 SEARCH_ENGINE = 'search.elastic.ElasticSearchEngine'  # use ES for courseware and course meta information indexing
 ELASTIC_SEARCH_CONFIG = [{'host': 'localhost'},]  # specific environments will override this setting
@@ -394,13 +405,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-ENABLE_ADWAYS_FOR_COURSES = (
-    'course-v1:SciencesPo+05008+session01',
-    'course-v1:SciencesPo+05008ENG+session01',
-    'course-v1:Paris1+16007+session01',
-    'course-v1:lorraine+30003+session03',
-    'course-v1:CNAM+01035+session01',
-    'course-v1:unicaen+48002+session01',
-    'course-v1:umontpellier+08005+session03',
-)
+ELASTIC_SEARCH_CONFIG = [{'host': 'localhost'},]
 
+HAYSTACK_CONNECTIONS = configure_haystack(ELASTIC_SEARCH_CONFIG)

@@ -1,3 +1,4 @@
+
 from ..common import *
 
 # This is a minimal settings file allowing us to run "update_assets"
@@ -6,3 +7,9 @@ from ..common import *
 DATABASES = {"default": {}}
 
 XQUEUE_INTERFACE = {"url": None, "django_auth": None}
+
+STATICFILES_STORAGE = "openedx.core.storage.ProductionStorage"
+
+STATIC_ROOT = "/edx/var/edxapp/static/"
+
+COMPREHENSIVE_THEME_DIRS = ["/edx/app/edxapp/themes"]
