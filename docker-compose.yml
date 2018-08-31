@@ -31,10 +31,10 @@ services:
   lms:
     build: .
     image: edxapp:latest
+    env_file: env.d/theme
     environment:
       SERVICE_VARIANT: lms
       DJANGO_SETTINGS_MODULE: lms.envs.fun.docker_run_lms
-      THEME: corporate
     volumes:
       - ./config:/config
       - ./data:/edx/var/edxapp
@@ -49,6 +49,7 @@ services:
       context: .
       dockerfile: Dockerfile_dev
     image: edxapp:dev
+    env_file: env.d/theme
     ports:
       - "8072:8000"
     volumes:
@@ -77,10 +78,7 @@ services:
       - "8082:8000"
     volumes:
       - ./config:/config
-      - ./data/static/cms:/edx/var/edxapp/static/cms
-      - ./data/media:/edx/var/edxapp/media
-      - ./data/shared:/edx/var/edxapp/shared
-      - ./data/data:/edx/var/edxapp/data
+      - ./data:/edx/var/edxapp
 
     command: >
       python manage.py cms runserver 0.0.0.0:8000 --settings=fun.docker_run_cms_dev

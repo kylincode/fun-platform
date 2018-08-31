@@ -1,0 +1,7 @@
+version: "3.2"
+
+services:
+
+  lms-dev:
+    volumes:
+      - ./src/themes:/edx/app/edxapp/themes

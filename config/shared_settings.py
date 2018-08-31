@@ -49,7 +49,9 @@ PROCTORU_API = config('PROCTORU_API', default='x.proctoru.com')  # preprod api
 PROCTORU_TOKEN = config('PROCTORU_TOKEN', default='f0ef8b49-51e6-4009-8db3-6b87d77f40d1')  # preprod auth token
 
 
-
+COMPREHENSIVE_THEME_DIRS = config("COMPREHENSIVE_THEME_DIRS", default=["/edx/app/edxapp/themes"])
+ENABLE_COMPREHENSIVE_THEMING = config("ENABLE_COMPREHENSIVE_THEMING", default=False)
+DEFAULT_SITE_THEME = config("DEFAULT_SITE_THEME", default=None)
 
 # those 2 constants are used in code to describe certificate, they are not i18ned
 CERT_NAME_SHORT = u"Attestation"

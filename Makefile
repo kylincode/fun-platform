@@ -39,6 +39,11 @@ dev:  ## activate source overrides for development
 	@$(COMPOSE) -f docker-compose.yml -f dev-volumes.yml up -d
 .PHONY: dev
 
+theme:
+	@./bin/clone_theme;
+	@$(COMPOSE) -f docker-compose.yml -f theme-volume.yml up -d
+.PHONY: theme
+
 logs:  ## get development logs
 	@$(COMPOSE) logs -f
 .PHONY: logs

@@ -52,7 +52,6 @@ RUN cd /edx/app/edxapp/edx-platform/node_modules/edx-ui-toolkit && npm install
 ADD ./src/edx-platform /edx/app/edxapp/edx-platform
 # We are building a whitebrand with fun-apps, so add repositories
 ADD ./src/fun-apps /edx/app/edxapp/fun-apps
-ADD ./src/themes/fun /edx/app/edxapp/themes/fun
 
 # Install fun whitebrand dependecies
 RUN pip install --src ../src -r ../fun-apps/requirements/base_wb.txt

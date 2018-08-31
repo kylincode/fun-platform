@@ -1,0 +1,4 @@
+# Theming
+THEME_URL=git@git.alt.openfun.fr:openfun/campus.git
+ENABLE_COMPREHENSIVE_THEMING=1
+DEFAULT_SITE_THEME=custom-theme

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+source env.d/theme
+
+echo -e "\033[1;33mGetting theme $THEME_URL\033[0m"
+
+git clone $THEME_URL src/themes/$DEFAULT_SITE_THEME
+cd src/themes/$DEFAULT_SITE_THEME
+git clean -fdx

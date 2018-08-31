@@ -19,13 +19,3 @@ git clone https://github.com/openfun/fun-apps.git src/fun-apps
 cd src/fun-apps
 git clean -fdx
 git checkout fun/whitebrand
-
-cd -
-
-export THEME=corporate
-
-echo -e "\033[1;33mGetting theme $THEME\033[0m"
-
-git clone git@git.alt.openfun.fr:openfun/$THEME.git
-cd src/$THEME
-git clean -fdx

@@ -12,4 +12,5 @@ STATICFILES_STORAGE = "openedx.core.storage.ProductionStorage"
 
 STATIC_ROOT = "/edx/var/edxapp/static/"
 
-COMPREHENSIVE_THEME_DIRS = ["/edx/app/edxapp/themes"]
+# edx-platform theme directory
+COMPREHENSIVE_THEME_DIRS = ["/edx/app/edxapp/edx-platform/themes"]
